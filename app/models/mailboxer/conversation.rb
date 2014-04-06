@@ -156,6 +156,7 @@ class Mailboxer::Conversation < ActiveRecord::Base
     receipts_for(participant).trash.count == receipts_for(participant).count
   end
 
+  #Returns true if the participant has trashed or deleted all the messages of the conversation
   def is_completely_trashed_or_deleted?(participant)
     return false unless participant
     receipts_for(participant).trash.count + receipts_for(participant).deleted.count == receipts_for(participant).count
